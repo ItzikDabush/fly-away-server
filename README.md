@@ -1,8 +1,8 @@
-# take-me
+# Fly-Away
+
+A simple app for searching flights, using SkyScanner API.
 
 Still developing. :-)
-
-Suppused to be a simple Travel App, using SkyScanner API.
 
 # Stack
 
@@ -22,4 +22,5 @@ Suppused to be a simple Travel App, using SkyScanner API.
 - The Server was bootstrapped with [Express.js](https://expressjs.com).
 - Run `npm start` to run the server in the develpoment mode.
 - Don't forget to put your own API Keys
+
 # fly-away-server
