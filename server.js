@@ -16,17 +16,17 @@ const RapidapiKey = process.env.X_RAPIDAPI_KEY;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  // console.log(req.body.params);
-  axios
-    .get(`https://api.ipdata.co/?api-key=${apiKeyIp}`)
-    .then(response => {
-      res.status(200).send(response.data);
-    })
-    .catch(err => {
-      console.log(err);
-    });
-});
+// app.get("/", (req, res) => {
+//   // console.log(req.body.params);
+//   axios
+//     .get(`https://api.ipdata.co/?api-key=${apiKeyIp}`)
+//     .then(response => {
+//       res.status(200).send(response.data);
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// });
 
 app.post("/getAirport", (req, res) => {
   // console.log(req.body.data);
@@ -71,11 +71,10 @@ app.post("/data", (req, res) => {
     stops
   } = req.body.data;
   console.log(req.body.data);
-  
-  
+
   function handleResponse(response) {
     console.log(response.data.Status);
-    
+
     if (response.data.Status === "UpdatesPending") {
       return setTimeout(() => {
         axios({
@@ -109,7 +108,7 @@ app.post("/data", (req, res) => {
     }
   }
 
-//Creating a session with Skyscanner. A successful response contains no content. The session key to poll the results is provided in the Location header of the response. The last value of location header contains the session key which is required when polling the session.
+  //Creating a session with Skyscanner. A successful response contains no content. The session key to poll the results is provided in the Location header of the response. The last value of location header contains the session key which is required when polling the session.
   axios({
     method: "POST",
     url:
