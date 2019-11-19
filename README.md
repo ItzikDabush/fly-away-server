@@ -16,6 +16,8 @@ Still developing. :-)
 - The UI was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 - Run npm start to run the app in the development mode.
 - Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- The UI repo is at [https://github.com/ItzikDabush/fly-away-server]
+
 
 ### Server Side:
 
@@ -23,4 +25,4 @@ Still developing. :-)
 - Run `npm start` to run the server in the develpoment mode.
 - Don't forget to put your own API Keys
 
-# fly-away-server
+
