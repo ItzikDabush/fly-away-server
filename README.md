@@ -2,7 +2,6 @@
 
 A simple app for searching flights, using SkyScanner API.
 
-Still developing. :-)
 
 # Stack
 

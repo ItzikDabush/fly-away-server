@@ -16,22 +16,9 @@ const RapidapiKey = process.env.X_RAPIDAPI_KEY;
 app.use(cors());
 app.use(bodyParser.json());
 
-// app.get("/", (req, res) => {
-//   // console.log(req.body.params);
-//   axios
-//     .get(`https://api.ipdata.co/?api-key=${apiKeyIp}`)
-//     .then(response => {
-//       res.status(200).send(response.data);
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-// });
 
 app.post("/getAirport", (req, res) => {
-  // console.log(req.body.data);
   const { originByIP } = req.body.data;
-
   axios({
     method: "GET",
     url:
@@ -47,7 +34,6 @@ app.post("/getAirport", (req, res) => {
     }
   })
     .then(response => {
-      console.log(response.data);
       res.status(200).send(response.data);
     })
 
@@ -70,11 +56,9 @@ app.post("/data", (req, res) => {
     infants,
     stops
   } = req.body.data;
-  console.log(req.body.data);
 
   function handleResponse(response) {
-    console.log(response.data.Status);
-
+  
     if (response.data.Status === "UpdatesPending") {
       return setTimeout(() => {
         axios({
@@ -95,7 +79,6 @@ app.post("/data", (req, res) => {
           }
         })
           .then(response => {
-            console.log("inside then");
             handleResponse(response);
           })
           .catch(err => {
@@ -103,7 +86,6 @@ app.post("/data", (req, res) => {
           });
       }, 1500);
     } else {
-      console.log("ended res");
       return res.status(200).send(response.data);
     }
   }
@@ -137,12 +119,8 @@ app.post("/data", (req, res) => {
     })
   })
     .then(response => {
-      console.log(response);
       let index = response.headers.location.lastIndexOf("/");
-      console.log(index);
       let sessionKey = response.headers.location.slice(index + 1);
-      console.log(sessionKey);
-
       return sessionKey;
     })
 
@@ -168,8 +146,6 @@ app.post("/data", (req, res) => {
       })
         .then(response => {
           handleResponse(response);
-          // console.log(response);
-          // res.status(200).write(response.data);
           return response;
         })
         .catch(error => {
@@ -178,30 +154,10 @@ app.post("/data", (req, res) => {
     })
     .catch(error => {
       console.log(error);
+      res.status(400).send(error);
     });
 });
 
-app.get("/currencies", (req, res) => {
-  // console.log(req.body.params);
-  axios({
-    method: "GET",
-    url:
-      "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/reference/v1.0/currencies",
-    headers: {
-      "content-type": "application/octet-stream",
-      "x-rapidapi-host":
-        "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-      "x-rapidapi-key": "6197cfc0d0msh9622056db966a97p1866fbjsn3d63183b204d"
-    }
-  })
-    .then(response => {
-      // console.log(response)
-      res.status(200).send(response.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-});
 
 app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);
