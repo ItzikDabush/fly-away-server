@@ -30,7 +30,7 @@ app.options('*', cors())
 app.all('', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://fly-away-itzik.herokuapp.com/");
   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-  // res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
   //Auth Each API Request created by user.
   next();
 });
