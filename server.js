@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3001;
 const apiKeyIp = process.env.IP_API_KEY;
 const RapidapiKey = process.env.X_RAPIDAPI_KEY;
 
-app.options("*", cors());
+// app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json());
 
