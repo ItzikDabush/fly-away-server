@@ -13,10 +13,9 @@ const PORT = process.env.PORT || 3001;
 const apiKeyIp = process.env.IP_API_KEY;
 const RapidapiKey = process.env.X_RAPIDAPI_KEY;
 
-app.options('*', cors())
+app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json());
-
 
 app.post("/getAirport", (req, res) => {
   const { originByIP } = req.body.data;
@@ -59,7 +58,6 @@ app.post("/data", (req, res) => {
   } = req.body.data;
 
   function handleResponse(response) {
-  
     if (response.data.Status === "UpdatesPending") {
       return setTimeout(() => {
         axios({
@@ -158,7 +156,6 @@ app.post("/data", (req, res) => {
       res.status(400).send(error);
     });
 });
-
 
 app.listen(PORT, () => {
   console.log(`app is running on port ${PORT}`);
