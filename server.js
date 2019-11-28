@@ -17,6 +17,26 @@ app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json());
 
+
+
+app.use(cors({
+  origin: 'https://fly-away-itzik.herokuapp.com/',
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+app.options('*', cors())
+
+
+app.all('', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://fly-away-itzik.herokuapp.com/");
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  // res.header('Access-Control-Allow-Headers', "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  //Auth Each API Request created by user.
+  next();
+});
+
+
+
 app.post("/getAirport", (req, res) => {
   const { originByIP } = req.body.data;
   axios({
