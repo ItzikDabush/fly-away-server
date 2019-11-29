@@ -40,7 +40,7 @@ app.all("", function(req, res, next) {
   next();
 });
 
-app.post("/getAirport", (req, res) => {
+app.get("/getAirport", (req, res) => {
   const { originByIP } = req.body.data;
   axios({
     method: "GET",
