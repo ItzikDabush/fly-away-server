@@ -17,19 +17,15 @@ app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json());
 
-
-
-app.all("", function(req, res, next) {
+app.use(function(req, res, next) {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://fly-away-itzik.herokuapp.com"
-  );
-  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+    "https://fly-away-itzik.herokuapp.com/"
+  ); // update to match the domain you will make the request from
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    "Origin, X-Requested-With, Content-Type, Accept"
   );
-  //Auth Each API Request created by user.
   next();
 });
 
