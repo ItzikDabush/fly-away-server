@@ -13,17 +13,10 @@ const PORT = process.env.PORT || 3001;
 const apiKeyIp = process.env.IP_API_KEY;
 const RapidapiKey = process.env.X_RAPIDAPI_KEY;
 
-// app.options("*", cors());
 app.options("*", cors());
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(
-  cors({
-    origin: "https://fly-away-itzik.herokuapp.com",
-    allowedHeaders: ["Content-Type", "Authorization"]
-  })
-);
 
 
 app.all("", function(req, res, next) {
@@ -40,7 +33,7 @@ app.all("", function(req, res, next) {
   next();
 });
 
-app.get("/getAirport", (req, res) => {
+app.post("/getAirport", (req, res) => {
   const { originByIP } = req.body.data;
   axios({
     method: "GET",
